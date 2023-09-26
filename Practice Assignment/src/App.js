@@ -28,7 +28,7 @@ const concepts = [
 function App() {
   return (
     <div>
-      <Header imageSrc={keyConceptsImage}></Header>
+      <Header />
       <AllConcept concepts={concepts}></AllConcept>
     </div>
   );
