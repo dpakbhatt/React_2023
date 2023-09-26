@@ -1,7 +1,9 @@
 import React from "react";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
+// WE CAN USE THIS AS WELL
+// function App() {....}
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -38,6 +40,6 @@ function App() {
       <Expenses data={expenses}></Expenses>
     </div>
   );
-}
+};
 
 export default App;
