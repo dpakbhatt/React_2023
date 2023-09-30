@@ -1,6 +1,5 @@
 import React from "react";
 import Expenses from "./components/Expenses/Expenses";
-import ExpenseItem from "./components/Expenses/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 // WE CAN USE THIS AS WELL
@@ -36,9 +35,13 @@ const App = () => {
   //   React.createElement(Expenses, { data: expenses })
   // );
 
+  const addToExpenses = (expenseObj) => {
+    console.log("Running in App.js: ", expenseObj);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onNewExpenseAdded={addToExpenses} />
       <Expenses data={expenses}></Expenses>
     </div>
   );
