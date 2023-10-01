@@ -8,7 +8,6 @@ const NewExpense = (props) => {
       ...expenseData,
       id: Math.random().toString(),
     };
-    console.log("Running in NewExpense.js: ", expenseDataObj);
     props.onNewExpenseAdded(expenseDataObj);
     return expenseDataObj;
   };

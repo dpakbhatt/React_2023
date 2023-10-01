@@ -2,52 +2,20 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  // MULTI STATE APPROACH
   const [enteredTitle, setTitle] = useState("");
   const [enteredAmount, setAmount] = useState("");
   const [enteredDate, setDate] = useState("");
 
-  // SINGLE STATE APPROACH
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
-  // });
-
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
-
-    // SINGLE STATE APPROACH, IF THE RESULT DEPENDS ON THE PREVIOUS STATE
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredTitle: event.target.value,
-    //   };
-    // });
   };
 
   const amountChangeHandler = (event) => {
     setAmount(event.target.value);
-
-    // SINGLE STATE APPROACH, IF THE RESULT DEPENDS ON THE PREVIOUS STATE
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredAmount: event.target.value,
-    //   };
-    // });
   };
 
   const dateChangeHandler = (event) => {
     setDate(event.target.value);
-
-    // SINGLE STATE APPROACH, IF THE RESULT DEPENDS ON THE PREVIOUS STATE
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredDate: event.target.value,
-    //   };
-    // });
   };
 
   const submitHandler = (event) => {
@@ -59,7 +27,6 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
 
-    // console.log(expenseData);
     props.onExpenseDataSubmit(expenseData);
 
     setTitle("");
