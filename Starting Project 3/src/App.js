@@ -39,7 +39,11 @@ function App() {
       <Header />
       <InvestmentForm onSubmit={calculateHandler} onReset={resetHandler} />
 
-      {!userInput && <p>No investment calculated yet.</p>}
+      {!userInput && (
+        <p style={{ textAlign: "center", fontWeight: "bold" }}>
+          No investment calculated yet.
+        </p>
+      )}
       {userInput && (
         <ResultTable
           data={yearlyData}
