@@ -27,14 +27,14 @@ const ResultTable = (props) => {
               <td>{year.year}</td>
               <td>
                 {formatter.format(
-                  +props.initialInvestment + year.yearlyContribution * year.year
+                  props.initialInvestment + year.yearlyContribution * year.year
                 )}
               </td>
               <td>{formatter.format(year.yearlyInterest)}</td>
               <td>
                 {formatter.format(
                   year.savingsEndOfYear -
-                    +props.initialInvestment -
+                    props.initialInvestment -
                     year.yearlyContribution * year.year
                 )}
               </td>
