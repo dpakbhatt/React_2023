@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./investmentForm.module.css";
+import classes from "./InvestmentForm.module.css";
 
 const InvestmentForm = (props) => {
   const [csValue, setcsValue] = useState(null);
