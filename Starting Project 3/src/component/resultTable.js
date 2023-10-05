@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./resultTable.module.css";
+import classes from "./ResultTable.module.css";
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",

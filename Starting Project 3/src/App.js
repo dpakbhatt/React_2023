@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "./component/header";
-import InvestmentForm from "./component/investmentForm";
-import ResultTable from "./component/resultTable";
+import Header from "./component/Header";
+import InvestmentForm from "./component/InvestmentForm";
+import ResultTable from "./component/ResultTable";
 
 function App() {
   const [userInput, setUserInput] = useState(null);
