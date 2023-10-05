@@ -20,6 +20,7 @@ const ResultTable = (props) => {
           <th>Total Savings</th>
         </tr>
       </thead>
+
       <tbody>
         {props.data.map((year) => {
           return (
