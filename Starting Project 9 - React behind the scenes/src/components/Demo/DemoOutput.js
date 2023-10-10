@@ -7,7 +7,7 @@ const DemoOutput = (props) => {
   const { items } = props;
 
   const sortedList = useMemo(() => {
-    console.log("RUNNING");
+    console.log("useMemo RUNNING");
     return items.sort((a, b) => a - b);
   }, [items]);
 
