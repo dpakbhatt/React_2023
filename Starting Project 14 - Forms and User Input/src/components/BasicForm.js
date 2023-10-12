@@ -69,7 +69,7 @@ const BasicForm = (props) => {
             onBlur={fNameBlurHandler}
           />
           {fNameHasError && (
-            <p className="error-text">First name must not be empty</p>
+            <p className="error-text">First name must not be empty.</p>
           )}
         </div>
         <div className={lNameInputClasses}>
@@ -82,7 +82,7 @@ const BasicForm = (props) => {
             onBlur={lNameBlurHandler}
           />
           {lNameHasError && (
-            <p className="error-text">Last name must not be empty</p>
+            <p className="error-text">Last name must not be empty.</p>
           )}
         </div>
       </div>
