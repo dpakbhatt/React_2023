@@ -4,10 +4,10 @@ import { Suspense } from "react";
 
 function EventsPage() {
   const data = useLoaderData();
-  const eventsData = data.events;
+  const eventsList = data.eventsData;
   return (
     <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
-      <Await resolve={eventsData}>
+      <Await resolve={eventsList}>
         {(loadedEvents) => <EventsList events={loadedEvents} />}
       </Await>
     </Suspense>
@@ -19,9 +19,6 @@ export default EventsPage;
 async function loadData() {
   const response = await fetch("http://localhost:8080/events");
   if (!response.ok) {
-    // throw new Response(JSON.stringify({ message: "Could not fetch events" }), {
-    //   status: 500,
-    // });
     json(
       { message: "Could not fetch events" },
       {
@@ -36,6 +33,6 @@ async function loadData() {
 
 export function loader() {
   return defer({
-    events: loadData(),
+    eventsData: loadData(),
   });
 }
