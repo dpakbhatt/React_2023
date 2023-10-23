@@ -52,14 +52,14 @@ function HomePage(props) {
 //   };
 // }
 
-// export async function getStaticProps() {
-//   // fetch data from an API
-//   return {
-//     props: {
-//       meetups: DUMMY_MEETUPS,
-//     },
-//     revalidate: 10, // Time in seconds
-//   };
-// }
+export async function getStaticProps() {
+  // fetch data from an API
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    revalidate: 10, // Time in seconds
+  };
+}
 
 export default HomePage;
