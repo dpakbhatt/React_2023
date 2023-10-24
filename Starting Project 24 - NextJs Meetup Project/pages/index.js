@@ -51,7 +51,7 @@ export async function getStaticProps() {
         };
       }),
     },
-    revalidate: 10, // Time in seconds
+    revalidate: 1, // Time in seconds
   };
 }
 
