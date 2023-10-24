@@ -1,3 +1,4 @@
+import { MongoClient, ObjectId } from "mongodb";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
 function DetailsPage(props) {
@@ -12,34 +13,50 @@ function DetailsPage(props) {
 }
 
 export async function getStaticPaths() {
+  const client = await MongoClient.connect(
+    "mongodb+srv://deepak:bholenath1atlaslatest@reactcluster.oivma2q.mongodb.net/meetups?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+  const meetupsCollection = db.collection("meetups");
+  const meetups = await meetupsCollection
+    .find({})
+    .project({ _id: 1 })
+    .toArray();
+  client.close();
+
   return {
     fallback: true,
-    paths: [
-      {
+    paths: meetups.map((item) => {
+      return {
         params: {
-          meetupId: "m1",
+          meetupId: item._id.toString(),
         },
-      },
-      {
-        params: {
-          meetupId: "m2",
-        },
-      },
-    ],
+      };
+    }),
   };
 }
 
 export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
   // fetch data from an API
+  const client = await MongoClient.connect(
+    "mongodb+srv://deepak:bholenath1atlaslatest@reactcluster.oivma2q.mongodb.net/meetups?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+  const meetupsCollection = db.collection("meetups");
+  const meetup = await meetupsCollection.findOne({
+    _id: new ObjectId(meetupId),
+  });
+  client.close();
+
   return {
     props: {
       meetupData: {
-        image:
-          "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2l0eXxlbnwwfHwwfHx8MA%3D%3D",
-        title: "First Meetup",
-        description: "This is first meetup",
-        address: "Address 1, Street No. 1, City 1",
+        id: meetup._id,
+        image: meetup.image,
+        title: meetup.title,
+        description: meetup.description,
+        address: meetup.address,
       },
     },
     revalidate: 10, // Time in seconds
