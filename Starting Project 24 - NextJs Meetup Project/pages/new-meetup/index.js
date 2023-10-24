@@ -1,3 +1,4 @@
+import Head from "next/head";
 import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 
 function NewMeetupPage() {
@@ -14,7 +15,15 @@ function NewMeetupPage() {
     console.log(data);
   }
 
-  return <NewMeetupForm onAddMeetup={onAddMeetupHandler} />;
+  return (
+    <>
+      <Head>
+        <title>Add New Meetup</title>
+        <meta name="description" content="Create your own meetups" />
+      </Head>
+      <NewMeetupForm onAddMeetup={onAddMeetupHandler} />
+    </>
+  );
 }
 
 export default NewMeetupPage;
