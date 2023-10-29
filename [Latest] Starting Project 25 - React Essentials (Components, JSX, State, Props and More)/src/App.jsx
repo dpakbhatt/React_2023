@@ -2,11 +2,18 @@ import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header";
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
+import { useState } from "react";
 
 function App() {
-  const selectHandler = () => {
-    console.log("Running");
+  const [selectedTab, setSelectedTab] = useState();
+
+  let tabContent = "Please select any tab";
+
+  const selectHandler = (selectedTab) => {
+    console.log("Running", selectedTab);
+    setSelectedTab(selectedTab);
   };
+
   return (
     <div>
       <Header />
@@ -27,11 +34,15 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={selectHandler}>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={() => selectHandler("components")}>
+              Components
+            </TabButton>
+            <TabButton onSelect={() => selectHandler("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => selectHandler("props")}>Props</TabButton>
+            <TabButton onSelect={() => selectHandler("state")}>State</TabButton>
           </menu>
+          {!selectedTab && tabContent}
+          {selectedTab && selectedTab}
         </section>
       </main>
     </div>
