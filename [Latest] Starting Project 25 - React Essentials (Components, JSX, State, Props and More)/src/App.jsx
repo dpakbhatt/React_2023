@@ -3,11 +3,10 @@ import Header from "./components/Header";
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 import { useState } from "react";
+import { EXAMPLES } from "./data";
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState();
-
-  let tabContent = "Please select any tab";
+  const [selectedTab, setSelectedTab] = useState("components");
 
   const selectHandler = (selectedTab) => {
     console.log("Running", selectedTab);
@@ -41,8 +40,13 @@ function App() {
             <TabButton onSelect={() => selectHandler("props")}>Props</TabButton>
             <TabButton onSelect={() => selectHandler("state")}>State</TabButton>
           </menu>
-          {!selectedTab && tabContent}
-          {selectedTab && selectedTab}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTab].title}</h3>
+            <p>{EXAMPLES[selectedTab].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTab].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
