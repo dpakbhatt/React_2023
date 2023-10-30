@@ -1,4 +1,4 @@
-export function Tabs({ children, buttons, buttonsContainer }) {
+export function Tabs({ children, buttons, buttonsContainer = "menu" }) {
   const ButtonsContainer = buttonsContainer;
   return (
     <>
