@@ -59,7 +59,17 @@ button:hover {
   background: linear-gradient(180deg, #1b5346, #113c32);
 }
 
+button:disabled {
+  background: linear-gradient(180deg, #f6f6f6, #17493d);
+}
+
 .buttonAlt:hover {
   background: transparent;
   color: #91e1d0;
+}
+
+.durationError {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  text-align: center;
 }

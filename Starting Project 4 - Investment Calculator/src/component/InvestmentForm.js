@@ -97,6 +97,13 @@ const InvestmentForm = (props) => {
           />
         </p>
       </div>
+
+      {idValue && idValue <= 0 && (
+        <p className={classes.durationError}>
+          Please add duration greater than 0!
+        </p>
+      )}
+
       <p className={classes.actions}>
         <button
           type="reset"
@@ -105,7 +112,11 @@ const InvestmentForm = (props) => {
         >
           Reset
         </button>
-        <button type="submit" className={classes.button}>
+        <button
+          type="submit"
+          className={classes.button}
+          disabled={idValue <= 0}
+        >
           Calculate
         </button>
       </p>
