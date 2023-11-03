@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import classes from "./InvestmentForm.module.css";
 
 const InvestmentForm = (props) => {
-  const [csValue, setcsValue] = useState(null);
-  const [ysValue, setysValue] = useState(null);
-  const [eiValue, seteiValue] = useState(null);
-  const [idValue, setidValue] = useState(null);
+  const [csValue, setcsValue] = useState("");
+  const [ysValue, setysValue] = useState("");
+  const [eiValue, seteiValue] = useState("");
+  const [idValue, setidValue] = useState("");
 
   const currentSavingsHandler = (event) => {
     if (event.target.value) {
@@ -46,10 +46,10 @@ const InvestmentForm = (props) => {
 
   const resetHandler = (event) => {
     event.preventDefault();
-    setcsValue(null);
-    setysValue(null);
-    seteiValue(null);
-    setidValue(null);
+    setcsValue("");
+    setysValue("");
+    seteiValue("");
+    setidValue("");
     props.onReset();
   };
 
