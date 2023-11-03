@@ -69,6 +69,7 @@ button:disabled {
 }
 
 .durationError {
+  font-weight: bold;
   margin-top: 10px;
   font-size: 0.75rem;
   text-align: center;
