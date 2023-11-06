@@ -72,9 +72,7 @@ export default function AuthInputs() {
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <StyledButton className="button" onClick={handleLogin}>
-          Sign In
-        </StyledButton>
+        <StyledButton onClick={handleLogin}>Sign In</StyledButton>
       </div>
     </div>
   );
