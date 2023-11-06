@@ -1,4 +1,30 @@
 import { useState } from "react";
+import { styled } from "styled-components";
+
+const Label = styled.label`
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${(props) => (props.$invalid ? "#f87171" : "#6b7280")};
+`;
+
+const StyledButton = styled.button`
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  color: #1f2937;
+  background-color: #f0b322;
+  border-radius: 6px;
+  border: none;
+
+  &:hover {
+    background-color: #f0920e;
+  }
+`;
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -24,9 +50,7 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <div className="controls">
         <p>
-          <label className={`label ${emailNotValid ? "invalid" : ""}`}>
-            Email
-          </label>
+          <Label $invalid={emailNotValid}>Email</Label>
           <input
             type="email"
             className={emailNotValid ? "invalid" : undefined}
@@ -34,9 +58,7 @@ export default function AuthInputs() {
           />
         </p>
         <p>
-          <label className={`label ${passwordNotValid ? "invalid" : ""}`}>
-            Password
-          </label>
+          <Label $invalid={passwordNotValid}>Password</Label>
           <input
             type="password"
             className={passwordNotValid ? "invalid" : undefined}
@@ -50,9 +72,9 @@ export default function AuthInputs() {
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <button className="button" onClick={handleLogin}>
+        <StyledButton className="button" onClick={handleLogin}>
           Sign In
-        </button>
+        </StyledButton>
       </div>
     </div>
   );

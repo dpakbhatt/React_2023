@@ -43,7 +43,7 @@ button:focus {
   margin-bottom: 1.5rem;
 }
 
-.controls label {
+/* .controls label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
@@ -51,7 +51,7 @@ button:focus {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #6b7280;
-}
+} */
 
 .controls input {
   width: 100%;
