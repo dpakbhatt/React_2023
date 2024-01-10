@@ -18,12 +18,25 @@ function App() {
     });
   }
 
+  function handleSaveProject(projectData) {
+    setProjectState((prevState) => {
+      const newProject = { ...projectData, id: Math.random() };
+
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject],
+      };
+    });
+  }
+
+  console.log(projectState);
+
   return (
     <>
       <main className="h-screen my-8 flex gap-8">
         <ProjectsSidebar addProjectClicked={handleAddProject} />
         {projectState.selectedProjectId === null ? (
-          <NewProject />
+          <NewProject saveClicked={handleSaveProject} />
         ) : (
           <NoProjectSelected createNewProjectClicked={handleAddProject} />
         )}
