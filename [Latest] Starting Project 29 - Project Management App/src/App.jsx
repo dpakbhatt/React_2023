@@ -24,17 +24,19 @@ function App() {
 
       return {
         ...prevState,
+        selectedProjectId: undefined,
         projects: [...prevState.projects, newProject],
       };
     });
   }
 
-  console.log(projectState);
-
   return (
     <>
       <main className="h-screen my-8 flex gap-8">
-        <ProjectsSidebar addProjectClicked={handleAddProject} />
+        <ProjectsSidebar
+          addProjectClicked={handleAddProject}
+          projects={projectState.projects}
+        />
         {projectState.selectedProjectId === null ? (
           <NewProject saveClicked={handleSaveProject} />
         ) : (
