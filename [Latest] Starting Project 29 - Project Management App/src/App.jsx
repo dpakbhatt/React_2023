@@ -79,7 +79,16 @@ function App() {
     });
   }
 
-  function handleDeleteTask() {}
+  function handleDeleteTask(id) {
+    setProjectState((prevState) => {
+      const updatedTasks = prevState.tasks.filter((task) => task.id !== id);
+
+      return {
+        ...prevState,
+        tasks: updatedTasks,
+      };
+    });
+  }
 
   const selectedProject = projectState.projects.find(
     (project) => project.id === projectState.selectedProjectId
