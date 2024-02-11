@@ -16,7 +16,7 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
   }
 
   if (answer.isCorrect !== null) {
-    timer: 2000;
+    timer = 2000;
   }
 
   function handleSelectAnswer(answer) {
