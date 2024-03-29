@@ -43,7 +43,10 @@ function App() {
     });
 
     try {
-      await updateUserPlaces([selectedPlace, ...userPlaces]);
+      const places = [...userPlaces];
+      if (!places.some((place) => place.id === selectedPlace.id)) {
+        await updateUserPlaces([selectedPlace, ...places]);
+      }
     } catch (error) {
       setUserPlaces(userPlaces);
       setErrorUpdatingPlaces({
