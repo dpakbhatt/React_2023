@@ -6,8 +6,20 @@ export default function StateLogin() {
     password: "",
   });
 
+  const [didEdit, setDidEdit] = useState({
+    email: false,
+    password: false,
+  });
+
+  const emailIsInvalid = didEdit.email && !enteredValues.email.includes("@");
+  const passwordIsInvalid =
+    didEdit.password && !(enteredValues.password.length > 6);
+
   function handleSubmit(event) {
     event.preventDefault();
+    if (emailIsInvalid || passwordIsInvalid) {
+      return;
+    }
     console.log(enteredValues);
   }
 
@@ -15,6 +27,17 @@ export default function StateLogin() {
     setEnteredValues((prevValues) => ({
       ...prevValues,
       [identifier]: event.target.value,
+    }));
+    setDidEdit((prevValues) => ({
+      ...prevValues,
+      [identifier]: false,
+    }));
+  }
+
+  function handleInputBlur(identifier) {
+    setDidEdit((prevValues) => ({
+      ...prevValues,
+      [identifier]: true,
     }));
   }
 
@@ -31,7 +54,13 @@ export default function StateLogin() {
             name="email"
             value={enteredValues.email}
             onChange={(event) => handleInputChange("email", event)}
+            onBlur={() => handleInputBlur("email")}
           />
+          {emailIsInvalid && (
+            <div className="control-error">
+              Please enter a valid email address.
+            </div>
+          )}
         </div>
 
         <div className="control no-margin">
@@ -42,7 +71,13 @@ export default function StateLogin() {
             name="password"
             value={enteredValues.password}
             onChange={(event) => handleInputChange("password", event)}
+            onBlur={() => handleInputBlur("password")}
           />
+          {passwordIsInvalid && (
+            <div className="control-error">
+              Password must have 6 or more charatcters.
+            </div>
+          )}
         </div>
       </div>
 
