@@ -1,32 +1,17 @@
-import { useRef } from "react";
-
 export default function Login() {
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(emailRef.current.value, passwordRef.current.value);
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <h2>Login</h2>
 
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" ref={emailRef} />
+          <input id="email" type="email" name="email" />
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            ref={passwordRef}
-          />
+          <input id="password" type="password" name="password" />
         </div>
       </div>
 
