@@ -1,11 +1,21 @@
+import { useState } from "react";
+
 export default function Signup() {
+  const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
+
   function handleSubmit(event) {
     event.preventDefault();
     const formDataObj = new FormData(event.target);
-    const fromdata = Object.fromEntries(formDataObj.entries());
+    const formData = Object.fromEntries(formDataObj.entries());
     const acquisitionGroup = formDataObj.getAll("acquisition");
-    fromdata.acquisition = acquisitionGroup;
-    console.log("Submitted: ", fromdata);
+    formData.acquisition = acquisitionGroup;
+    if (formData.password !== formData["confirm-password"]) {
+      setInvalidConfirmPassword(true);
+      return;
+    }
+    setInvalidConfirmPassword(false);
+
+    console.log("Submitted: ", formData);
   }
 
   return (
@@ -38,6 +48,9 @@ export default function Signup() {
             name="confirm-password"
             required
           />
+          {invalidConfirmPassword && (
+            <div className="control-error">Passwords must match.</div>
+          )}
         </div>
       </div>
 
