@@ -9,7 +9,7 @@ export default function Meals() {
     data: meals,
     error,
     isLoading,
-  } = useHttp("http://localhost:3000/meals", [], requestConfig);
+  } = useHttp("http://localhost:3000/meals", requestConfig, []);
 
   if (isLoading) {
     return <p className="center">Fetching meals...</p>;
