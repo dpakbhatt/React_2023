@@ -23,6 +23,7 @@ export default function Checkout() {
     isLoading: isSending,
     error,
     sendRequest,
+    clearData,
   } = useHttp("http://localhost:3000/ordersss", requestConfig);
 
   const cartTotal = cartCntx.items.reduce((totalPrice, item) => {
@@ -48,6 +49,12 @@ export default function Checkout() {
     );
   }
 
+  function handleFinish() {
+    userProgressCntx.hideCheckout();
+    cartCntx.clearCart();
+    clearData();
+  }
+
   let actions = (
     <>
       <Button type="button" textOnly onClick={handleCloseCheckout}>
@@ -61,12 +68,29 @@ export default function Checkout() {
     actions = <span>Sending order data...</span>;
   }
 
+  if (data && !error) {
+    return (
+      <Modal
+        open={userProgressCntx.progress === "checkout"}
+        onClose={handleFinish}
+      >
+        <h2>Success!</h2>
+        <p>Your order was submitted successfully</p>
+        <p>
+          We will get back to you with more details via email within the next
+          few minutes.
+        </p>
+        <p className="modal-actions">
+          <Button onClick={handleFinish}>Okay</Button>
+        </p>
+      </Modal>
+    );
+  }
+
   return (
     <Modal
       open={userProgressCntx.progress === "checkout"}
-      onClose={
-        userProgressCntx.progress === "checkout" ? handleCloseCheckout : null
-      }
+      onClose={handleCloseCheckout}
     >
       <form onSubmit={handleSubmit}>
         <h2>Checkout</h2>
